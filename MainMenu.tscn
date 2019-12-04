@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Start.gd" type="Script" id=1]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Start" type="Button" parent="."]
+margin_left = 293.556
+margin_top = 196.182
+margin_right = 762.556
+margin_bottom = 458.182
+text = "Start"
+script = ExtResource( 1 )
+[connection signal="pressed" from="Start" to="Start" method="_on_Start_pressed"]

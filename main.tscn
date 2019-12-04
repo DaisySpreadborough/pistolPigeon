@@ -10,6 +10,7 @@ radius = 19.6167
 height = 49.7489
 
 [node name="main" type="Node2D"]
+editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="Player" type="Area2D" parent="."]

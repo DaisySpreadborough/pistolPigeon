@@ -61,4 +61,4 @@ func _on_Player_body_entered(body):
 		reload(5)
 		body.queue_free()
 	if body.is_in_group("enemy"):
-		get_tree().reload_current_scene()
+		get_tree().change_scene("res://MainMenu.tscn")
