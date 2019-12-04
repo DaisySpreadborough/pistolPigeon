@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://sprites/bird.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Spawner.gd" type="Script" id=4]
+[ext_resource path="res://sprites/grass.png" type="Texture" id=5]
+[ext_resource path="res://sprites/grass_background_201062.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 19.6167
 height = 49.7489
 
 [node name="main" type="Node2D"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="Player" type="Area2D" parent="."]
@@ -33,10 +34,10 @@ position = Vector2( -34.1715, 2.65436 )
 position = Vector2( 42.4898, 1.6684 )
 
 [node name="bulletsLeft" type="Label" parent="Player"]
-margin_left = -31.824
-margin_top = -351.0
-margin_right = 50.176
-margin_bottom = -301.0
+margin_left = -42.9699
+margin_top = -85.0506
+margin_right = 39.0301
+margin_bottom = -35.0506
 text = "0"
 align = 1
 valign = 1
@@ -58,4 +59,16 @@ margin_bottom = 42.1671
 text = "Bullets Left"
 align = 1
 valign = 1
+
+[node name="Grass" type="Sprite" parent="."]
+position = Vector2( 484.296, 472.053 )
+z_index = 2
+texture = ExtResource( 5 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 486.712, 263.256 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
