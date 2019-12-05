@@ -1,6 +1,7 @@
 extends Node2D
 
 var bullet = preload("res://bullet.tscn")
+var pew
 
 var bulletSpeed = 500
 
@@ -9,6 +10,7 @@ var numBullets = 5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("bulletsLeft").text = str(numBullets)
+	pew = get_node("pew")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -37,6 +39,7 @@ func changeDirection(string):
 		get_node("Sprite").set_flip_h(true)
 
 func shoot(direction):
+	pew.play()
 	numBullets -= 1
 	get_node("bulletsLeft").text = str(numBullets)
 	if direction == "right":

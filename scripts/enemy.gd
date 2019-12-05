@@ -1,8 +1,10 @@
 extends RigidBody2D
 
+signal dead
+
 func _ready():
 	add_to_group("enemy")
-	pass # Replace with function body.
 
 func hit():
+	emit_signal("dead")
 	queue_free()

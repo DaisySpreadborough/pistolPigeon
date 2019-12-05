@@ -48,3 +48,6 @@ func spawn(object, direction, speed):
 		v = Vector2(-speed, 0)
 		obj.position = get_node("rightSpawn").position
 		obj.linear_velocity = v
+		
+func enemyDead():
+	get_node("deadSound").play()
