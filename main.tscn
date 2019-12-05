@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://sfx/pew.wav" type="AudioStream" id=4]
 [ext_resource path="res://scripts/Spawner.gd" type="Script" id=5]
 [ext_resource path="res://sfx/splat.wav" type="AudioStream" id=6]
-[ext_resource path="res://sprites/grass.png" type="Texture" id=7]
-[ext_resource path="res://sprites/grass_background_201062.png" type="Texture" id=8]
+[ext_resource path="res://sfx/ohNo.wav" type="AudioStream" id=7]
+[ext_resource path="res://sprites/grass.png" type="Texture" id=8]
+[ext_resource path="res://sprites/grass_background_201062.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 19.6167
@@ -59,6 +60,9 @@ position = Vector2( 1089.13, 400 )
 [node name="deadSound" type="AudioStreamPlayer" parent="Spawner"]
 stream = ExtResource( 6 )
 
+[node name="ammoDead" type="AudioStreamPlayer" parent="Spawner"]
+stream = ExtResource( 7 )
+
 [node name="label" type="Label" parent="."]
 margin_left = 447.836
 margin_top = 25.1671
@@ -71,12 +75,12 @@ valign = 1
 [node name="Grass" type="Sprite" parent="."]
 position = Vector2( 484.296, 472.053 )
 z_index = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground"]
 position = Vector2( 486.712, 263.256 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]

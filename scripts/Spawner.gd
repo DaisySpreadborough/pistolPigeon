@@ -41,6 +41,12 @@ func spawn(object, direction, speed):
 	var v = Vector2(speed, 0)
 	var obj = object.instance()
 	add_child(obj)
+	
+	if obj.is_in_group("enemy"):
+		obj.connect("dead", self, "enemyDead")
+	if obj.is_in_group("ammo"):
+		obj.connect("destroyed", self, "ammoDestroyed")
+	
 	if(direction == "left"):
 		obj.position = get_node("leftSpawn").position
 		obj.linear_velocity = v
@@ -50,4 +56,7 @@ func spawn(object, direction, speed):
 		obj.linear_velocity = v
 		
 func enemyDead():
-	get_node("deadSound").play()
+	$deadSound.play()
+
+func ammoDestroyed():
+	$ammoDead.play()

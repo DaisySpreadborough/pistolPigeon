@@ -62,6 +62,6 @@ func reload(nBullets):
 func _on_Player_body_entered(body):
 	if body.is_in_group("ammo"):
 		reload(5)
-		body.queue_free()
+		body.collected()
 	if body.is_in_group("enemy"):
 		get_tree().change_scene("res://MainMenu.tscn")
