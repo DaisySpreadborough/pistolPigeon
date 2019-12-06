@@ -46,6 +46,7 @@ func spawn(object, direction, speed):
 		obj.connect("dead", self, "enemyDead")
 	if obj.is_in_group("ammo"):
 		obj.connect("destroyed", self, "ammoDestroyed")
+		obj.connect("collected", self, "ammoCollected")
 	
 	if(direction == "left"):
 		obj.position = get_node("leftSpawn").position
@@ -60,3 +61,6 @@ func enemyDead():
 
 func ammoDestroyed():
 	$ammoDead.play()
+
+func ammoCollected():
+	$reloadSound.play()
