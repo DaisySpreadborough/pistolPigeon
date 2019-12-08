@@ -9,7 +9,7 @@ var enemySpeed = 500
 var timeElapsed = 0
 var nextSpawn = 0
 var curveFlatness = 3
-var asymptope = .1
+var asymptope = .05
 var expo = 2
 
 var maxBullets = 5

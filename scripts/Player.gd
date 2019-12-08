@@ -1,5 +1,7 @@
 extends Node2D
 
+signal gameOver
+
 var bullet = preload("res://bullet.tscn")
 var pew
 
@@ -64,4 +66,4 @@ func _on_Player_body_entered(body):
 		reload(5)
 		body.collected()
 	if body.is_in_group("enemy"):
-		get_tree().change_scene("res://MainMenu.tscn")
+		emit_signal("gameOver")
