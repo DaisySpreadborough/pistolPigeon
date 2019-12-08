@@ -3,9 +3,14 @@ extends Node2D
 var enemy = preload("res://enemy.tscn")
 var ammo = preload("res://ammoBox.tscn")
 
-var spawnSpeed = 1
-var timeSinceLast = 0
-var enemySpeed = 600
+
+var enemySpeed = 500
+
+var timeElapsed = 0
+var nextSpawn = 0
+var curveFlatness = 3
+var asymptope = .1
+var expo = 2
 
 var maxBullets = 5
 var numEnSinceLastAmmo = 0
@@ -17,10 +22,9 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	timeSinceLast += delta
-	if timeSinceLast > spawnSpeed:
-		enemySpeed += enemyIncrease
-		spawnSpeed -= spawnIncrease
+	timeElapsed += delta
+	if timeElapsed > nextSpawn:
+		increaseSpeed()
 		var obj
 		if numEnSinceLastAmmo > (maxBullets /2):
 			obj = ammo
@@ -31,10 +35,8 @@ func _process(delta):
 		
 		if floor(rand_range(0,2)):
 			spawn(obj, "left", enemySpeed)
-			timeSinceLast = 0
 		else:
 			spawn(obj, "right", enemySpeed)
-			timeSinceLast = 0
 		
 
 func spawn(object, direction, speed):
@@ -55,6 +57,10 @@ func spawn(object, direction, speed):
 		v = Vector2(-speed, 0)
 		obj.position = get_node("rightSpawn").position
 		obj.linear_velocity = v
+		
+func increaseSpeed():
+	var timeDiff = (curveFlatness / sqrt((5 * timeElapsed) + 20) + asymptope)
+	nextSpawn = timeElapsed + timeDiff
 		
 func enemyDead():
 	$deadSound.play()
