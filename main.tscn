@@ -25,7 +25,6 @@ extents = Vector2( 570.764, 61.951 )
 script = ExtResource( 1 )
 
 [node name="Player" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 478.824, 400 )
 script = ExtResource( 2 )
 

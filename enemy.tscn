@@ -1,22 +1,50 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/enemy.gd" type="Script" id=1]
-[ext_resource path="res://sprites/tempEnemy.png" type="Texture" id=2]
+[ext_resource path="res://sprites/bust.png" type="Texture" id=2]
+[ext_resource path="res://sprites/enemyEyePart.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 98.2299, 150.522 )
 
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+scale_random = 0.2
+hue_variation = -0.77
+hue_variation_random = 0.24
+
 [node name="enemy" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.3, 0.3 )
 shape = SubResource( 1 )
+
+[node name="LeftEye" type="Particles2D" parent="."]
+position = Vector2( -23.1646, -53.7419 )
+amount = 12
+lifetime = 2.0
+randomness = 0.24
+local_coords = false
+process_material = SubResource( 2 )
+texture = ExtResource( 3 )
+
+[node name="RightEye" type="Particles2D" parent="."]
+position = Vector2( 17.6051, -55.595 )
+amount = 12
+lifetime = 2.0
+randomness = 0.24
+local_coords = false
+process_material = SubResource( 2 )
+texture = ExtResource( 3 )
