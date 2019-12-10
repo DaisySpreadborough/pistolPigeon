@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -21,10 +21,14 @@ height = 49.7489
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 570.764, 61.951 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 34
+
 [node name="main" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Player" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 478.824, 400 )
 script = ExtResource( 2 )
 
@@ -75,6 +79,7 @@ stream = ExtResource( 7 )
 stream = ExtResource( 8 )
 
 [node name="Grass" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 484.296, 472.053 )
 z_index = 2
 
@@ -107,5 +112,13 @@ margin_bottom = 405.022
 rect_scale = Vector2( 0.6, 0.6 )
 texture_normal = ExtResource( 12 )
 texture_hover = ExtResource( 13 )
+
+[node name="Score" type="RichTextLabel" parent="gameOver"]
+margin_left = 434.954
+margin_top = 341.0
+margin_right = 563.954
+margin_bottom = 358.0
+custom_fonts/mono_font = SubResource( 3 )
+text = "Score = 0"
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="button_down" from="gameOver/TextureButton" to="." method="restart"]

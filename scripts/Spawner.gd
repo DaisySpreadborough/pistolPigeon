@@ -3,6 +3,7 @@ extends Node2D
 var enemy = preload("res://enemy.tscn")
 var ammo = preload("res://ammoBox.tscn")
 
+var enemyKilled = 0
 
 var enemySpeed = 500
 
@@ -63,6 +64,7 @@ func increaseSpeed():
 	nextSpawn = timeElapsed + timeDiff
 		
 func enemyDead():
+	enemyKilled += 1
 	$deadSound.play()
 
 func ammoDestroyed():

@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 var main = preload("res://main.tscn")
 
