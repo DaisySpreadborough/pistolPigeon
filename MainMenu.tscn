@@ -1,29 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://bvq2la1eh171c"]
 
-[ext_resource path="res://sprites/start2.png" type="Texture" id=1]
-[ext_resource path="res://sprites/start1.png" type="Texture" id=2]
-[ext_resource path="res://scripts/Start.gd" type="Script" id=3]
-[ext_resource path="res://sprites/mainMenuBackground.png" type="Texture" id=4]
-[ext_resource path="res://sprites/PistolPigeon.png" type="Texture" id=5]
+[ext_resource type="Texture2D" uid="uid://bgor1ju2c047g" path="res://sprites/start2.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://kxsij3g0s46q" path="res://sprites/start1.png" id="2"]
+[ext_resource type="Script" path="res://scripts/Start.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://b46amvjy67wiu" path="res://sprites/mainMenuBackground.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://clqijewjgcvvl" path="res://sprites/PistolPigeon.png" id="5"]
 
 [node name="MainMenu" type="Node2D"]
 
 [node name="Start" type="TextureButton" parent="."]
-margin_left = 517.782
-margin_top = 312.209
-margin_right = 793.782
-margin_bottom = 471.209
-texture_normal = ExtResource( 1 )
-texture_hover = ExtResource( 2 )
-script = ExtResource( 3 )
+offset_left = 517.782
+offset_top = 312.209
+offset_right = 793.782
+offset_bottom = 471.209
+texture_normal = ExtResource("1")
+texture_hover = ExtResource("2")
+script = ExtResource("3")
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 534.233, 279.849 )
-scale = Vector2( 0.8, 0.7 )
+[node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-texture = ExtResource( 4 )
+position = Vector2(534.233, 279.849)
+scale = Vector2(0.8, 0.7)
+texture = ExtResource("4")
 
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 476.445, 151.196 )
-texture = ExtResource( 5 )
+[node name="Sprite2" type="Sprite2D" parent="."]
+position = Vector2(476.445, 151.196)
+texture = ExtResource("5")
+
 [connection signal="pressed" from="Start" to="Start" method="_on_Start_pressed"]

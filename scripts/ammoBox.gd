@@ -12,7 +12,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func collected():
+func collecteditem():
 	emit_signal("collected")
 	queue_free()
 

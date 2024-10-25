@@ -2,17 +2,17 @@
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://sprites/bird.png" type="Texture" id=3]
+[ext_resource path="res://sprites/bird.png" type="Texture2D" id=3]
 [ext_resource path="res://sfx/pew.wav" type="AudioStream" id=4]
 [ext_resource path="res://scripts/Spawner.gd" type="Script" id=5]
 [ext_resource path="res://sfx/splat.wav" type="AudioStream" id=6]
 [ext_resource path="res://sfx/ohNo.wav" type="AudioStream" id=7]
 [ext_resource path="res://sfx/reload.wav" type="AudioStream" id=8]
-[ext_resource path="res://sprites/grass.png" type="Texture" id=9]
-[ext_resource path="res://sprites/grass_background_201062.png" type="Texture" id=10]
-[ext_resource path="res://sprites/GameOver.png" type="Texture" id=11]
-[ext_resource path="res://sprites/Restart1.png" type="Texture" id=12]
-[ext_resource path="res://sprites/Restart2.png" type="Texture" id=13]
+[ext_resource path="res://sprites/grass.png" type="Texture2D" id=9]
+[ext_resource path="res://sprites/grass_background_201062.png" type="Texture2D" id=10]
+[ext_resource path="res://sprites/GameOver.png" type="Texture2D" id=11]
+[ext_resource path="res://sprites/Restart1.png" type="Texture2D" id=12]
+[ext_resource path="res://sprites/Restart2.png" type="Texture2D" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 19.6167
@@ -21,7 +21,7 @@ height = 49.7489
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 570.764, 61.951 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 size = 34
 
 [node name="main" type="Node2D"]
@@ -32,7 +32,7 @@ editor/display_folded = true
 position = Vector2( 478.824, 400 )
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2( 4.86615, -1.15637 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
@@ -41,17 +41,17 @@ texture = ExtResource( 3 )
 position = Vector2( -0.506744, 2.80121 )
 shape = SubResource( 1 )
 
-[node name="leftBulletPos" type="Position2D" parent="Player"]
+[node name="leftBulletPos" type="Marker2D" parent="Player"]
 position = Vector2( -34.1715, 2.65436 )
 
-[node name="rightBulletPos" type="Position2D" parent="Player"]
+[node name="rightBulletPos" type="Marker2D" parent="Player"]
 position = Vector2( 42.4898, 1.6684 )
 
 [node name="bulletsLeft" type="Label" parent="Player"]
-margin_left = -42.9699
-margin_top = -85.0506
-margin_right = 39.0301
-margin_bottom = -35.0506
+offset_left = -42.9699
+offset_top = -85.0506
+offset_right = 39.0301
+offset_bottom = -35.0506
 text = "0"
 align = 1
 valign = 1
@@ -63,10 +63,10 @@ stream = ExtResource( 4 )
 editor/display_folded = true
 script = ExtResource( 5 )
 
-[node name="leftSpawn" type="Position2D" parent="Spawner"]
+[node name="leftSpawn" type="Marker2D" parent="Spawner"]
 position = Vector2( -51.273, 400 )
 
-[node name="rightSpawn" type="Position2D" parent="Spawner"]
+[node name="rightSpawn" type="Marker2D" parent="Spawner"]
 position = Vector2( 1089.13, 400 )
 
 [node name="deadSound" type="AudioStreamPlayer" parent="Spawner"]
@@ -87,12 +87,12 @@ z_index = 2
 position = Vector2( -3.05176e-005, 59.4483 )
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Grass"]
+[node name="Sprite2D" type="Sprite2D" parent="Grass"]
 texture = ExtResource( 9 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
 position = Vector2( 488.004, 255.502 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 10 )
@@ -100,25 +100,25 @@ texture = ExtResource( 10 )
 [node name="gameOver" type="Node2D" parent="."]
 visible = false
 
-[node name="GameOverSpr" type="Sprite" parent="gameOver"]
+[node name="GameOverSpr" type="Sprite2D" parent="gameOver"]
 position = Vector2( 519.406, 145.752 )
 texture = ExtResource( 11 )
 
 [node name="TextureButton" type="TextureButton" parent="gameOver"]
-margin_left = 347.884
-margin_top = 212.022
-margin_right = 919.884
-margin_bottom = 405.022
-rect_scale = Vector2( 0.6, 0.6 )
+offset_left = 347.884
+offset_top = 212.022
+offset_right = 919.884
+offset_bottom = 405.022
+scale = Vector2( 0.6, 0.6 )
 texture_normal = ExtResource( 12 )
 texture_hover = ExtResource( 13 )
 
 [node name="Score" type="RichTextLabel" parent="gameOver"]
-margin_left = 434.954
-margin_top = 341.0
-margin_right = 563.954
-margin_bottom = 358.0
-custom_fonts/mono_font = SubResource( 3 )
+offset_left = 434.954
+offset_top = 341.0
+offset_right = 563.954
+offset_bottom = 358.0
+theme_override_fonts/mono_font = SubResource( 3 )
 text = "Score = 0"
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="button_down" from="gameOver/TextureButton" to="." method="restart"]

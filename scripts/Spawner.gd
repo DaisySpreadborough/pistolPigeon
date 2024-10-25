@@ -34,7 +34,7 @@ func _process(delta):
 			obj = enemy
 			numEnSinceLastAmmo += 1
 		
-		if floor(rand_range(0,2)):
+		if floor(randf_range(0,2)):
 			spawn(obj, "left", enemySpeed)
 		else:
 			spawn(obj, "right", enemySpeed)
@@ -42,14 +42,14 @@ func _process(delta):
 
 func spawn(object, direction, speed):
 	var v = Vector2(speed, 0)
-	var obj = object.instance()
+	var obj = object.instantiate()
 	add_child(obj)
 	
 	if obj.is_in_group("enemy"):
-		obj.connect("dead", self, "enemyDead")
+		obj.connect("dead", Callable(self, "enemyDead"))
 	if obj.is_in_group("ammo"):
-		obj.connect("destroyed", self, "ammoDestroyed")
-		obj.connect("collected", self, "ammoCollected")
+		obj.connect("destroyed", Callable(self, "ammoDestroyed"))
+		obj.connect("collected", Callable(self, "ammoCollected"))
 	
 	if(direction == "left"):
 		obj.position = get_node("leftSpawn").position

@@ -1,0 +1,5 @@
+res://default_env.tres
+res://MainMenu.tscn
+res://scripts/Start.gd
+res://scripts/ammoBox.gd
+res://scripts/Player.gd

@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	$Player.connect("gameOver", self, "showGameOver")
+	$Player.connect("gameOver", Callable(self, "showGameOver"))
 	pass # Replace with function body.
 
 func restart():

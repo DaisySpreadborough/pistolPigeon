@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/pew.wav-32ae4cdad32e602ee4800d1c4a4c622f.sample"
+type="AudioStreamWAV"
+uid="uid://uxmm83evdd52"
+path="res://.godot/imported/pew.wav-32ae4cdad32e602ee4800d1c4a4c622f.sample"
 
 [deps]
 
 source_file="res://sfx/pew.wav"
-dest_files=[ "res://.import/pew.wav-32ae4cdad32e602ee4800d1c4a4c622f.sample" ]
+dest_files=["res://.godot/imported/pew.wav-32ae4cdad32e602ee4800d1c4a4c622f.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

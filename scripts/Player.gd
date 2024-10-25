@@ -36,9 +36,9 @@ func changeDirection(string):
 	if string == "right" or string == "left":
 		direction = string
 	if direction == "left":
-		get_node("Sprite").set_flip_h(false)
+		get_node("Sprite2D").set_flip_h(false)
 	if direction == "right":
-		get_node("Sprite").set_flip_h(true)
+		get_node("Sprite2D").set_flip_h(true)
 
 func shoot(direction):
 	pew.play()
@@ -46,13 +46,13 @@ func shoot(direction):
 	get_node("bulletsLeft").text = str(numBullets)
 	if direction == "right":
 		var v = Vector2(1,0)
-		var bull = bullet.instance()
+		var bull = bullet.instantiate()
 		add_child(bull)
 		bull.position = get_node("rightBulletPos").position
 		bull.linear_velocity = v * bulletSpeed
 	if direction == "left":
 		var v = Vector2(-1,0)
-		var bull = bullet.instance()
+		var bull = bullet.instantiate()
 		add_child(bull)
 		bull.position = get_node("leftBulletPos").position
 		bull.linear_velocity = v * bulletSpeed
@@ -64,6 +64,6 @@ func reload(nBullets):
 func _on_Player_body_entered(body):
 	if body.is_in_group("ammo"):
 		reload(5)
-		body.collected()
+		body.collecteditem()
 	if body.is_in_group("enemy"):
 		emit_signal("gameOver")
